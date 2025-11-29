@@ -3,33 +3,33 @@
     <ul class="links">
 
         <li th:classappend="${active} == 'fooldal' ? 'active': '' ">
-            <a href="/">Főoldal</a>
+            <a th:href="@{/}">Főoldal</a>
         </li>
 
         <li th:classappend="${active} == 'adatbazis' ? 'active': '' ">
-            <a href="/adatbazis">Adatbázis</a>
+            <a th:href="@{/adatbazis}">Adatbázis</a>
         </li>
 
         <li th:classappend="${active} == 'kapcsolat' ? 'active': '' ">
-            <a href="/kapcsolat">Kapcsolat</a>
+            <a th:href="@{/kapcsolat}">Kapcsolat</a>
         </li>
 
         <li sec:authorize="isAuthenticated()"
             th:classappend="${active} == 'uzenet' ? 'active': '' ">
-            <a href="/uzenet">Üzenetek</a>
+            <a th:href="@{/uzenet}">Üzenetek</a>
         </li>
 
         <li th:classappend="${active} == 'diagram' ? 'active': '' ">
-            <a href="/diagram">Diagram</a>
+            <a th:href="@{/diagram}">Diagram</a>
         </li>
 
         <li th:classappend="${active} == 'crud' ? 'active': '' ">
-            <a href="/crud">CRUD</a>
+            <a th:href="@{/crud}">CRUD</a>
         </li>
 
         <li sec:authorize="hasAuthority('ADMIN')"
             th:classappend="${active} == 'admin' ? 'active': '' ">
-            <a href="/admin">Admin</a>
+            <a th:href="@{/admin}">Admin</a>
         </li>
 
         <li sec:authorize="isAuthenticated()">
@@ -43,11 +43,11 @@
         </li>
 
         <li sec:authorize="isAnonymous()">
-            <a href="/bejelentkezes">Bejelentkezés</a>
+            <a th:href="@{/bejelentkezes}">Bejelentkezés</a>
         </li>
 
         <li sec:authorize="isAnonymous()">
-            <a href="/regisztracio">Regisztráció</a>
+            <a th:href="@{/regisztracio}">Regisztráció</a>
         </li>
     </ul>
 </nav>
