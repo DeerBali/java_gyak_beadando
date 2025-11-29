@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="hu">
+
+<head>
+    <title>web 2 előadás beadandó</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <link rel="stylesheet" th:href="@{/stylesheets/main.css}">
+    <noscript>
+        <link rel="stylesheet" th:href="@{/stylesheets/noscript.css}">
+    </noscript>
+
+    <link rel="shortcut icon" th:href="@{/images/football.png}" type="image/x-icon">
+</head>
+
+<body class="is-preload">
+<div id="wrapper" class="fade-in">
+
+    <!-- Intro -->
+    <div id="intro">
+        <h1>NB1 játékoskereső</h1>
+        <p>Ez egy oldal, ami az NB1-es játékosokről készült el.</p>
+        <ul class="actions">
+            <li><a href="#header" class="button scrolly">Tovább</a></li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <a th:href="@{/}" class="logo">NB1</a>
+    </header>
+
+    <!-- Nav -->
+    <nav th:replace="fragments/navbar :: nav(active='diagram')"></nav>
+
+    <!-- Main -->
+    <div id="main">
+        <h2>ChartJS</h2>
+
+        <div>
+            <h2 class="mb-4">Játékosok pozíció szerinti megoszlása (%)</h2>
+            <canvas id="pozicioChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" th:replace="fragments/footer"></footer>
+</div>
+
+<!-- CDN ChartJS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Saját piechart script -->
+<script th:src="@{/javascripts/piechartjs.js}"></script>
+
+<!-- HTML5UP scripts -->
+<script th:src="@{/javascripts/jquery.min.js}"></script>
+<script th:src="@{/javascripts/jquery.scrollex.min.js}"></script>
+<script th:src="@{/javascripts/jquery.scrolly.min.js}"></script>
+<script th:src="@{/javascripts/browser.min.js}"></script>
+<script th:src="@{/javascripts/breakpoints.min.js}"></script>
+<script th:src="@{/javascripts/util.js}"></script>
+<script th:src="@{/javascripts/main.js}"></script>
+
+</body>
+</html>
