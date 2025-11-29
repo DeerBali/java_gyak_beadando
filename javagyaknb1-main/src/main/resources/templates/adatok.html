@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>web 2 előadás beadandó – Adatbázis</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <link rel="stylesheet" th:href="@{/stylesheets/main.css}" />
+    <noscript>
+        <link rel="stylesheet" th:href="@{/stylesheets/noscript.css}" />
+    </noscript>
+
+    <link rel="shortcut icon"
+          th:href="@{/images/football.png}"
+          type="image/x-icon">
+</head>
+<body class="is-preload">
+
+<div id="wrapper" class="fade-in">
+
+    <!-- Intro -->
+    <div id="intro">
+        <h1>NB1 játékoskereső</h1>
+        <p>Ez egy oldal, ami az NB1-es játékosokről készült el.</p>
+        <ul class="actions">
+            <li><a href="#header" class="button scrolly">Tovább</a></li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <a th:href="@{/}" class="logo">NB1</a>
+    </header>
+
+    <!-- Nav -->
+    <nav th:replace="fragments/navbar :: nav(active='adatbazis')"></nav>
+
+    <!-- Main -->
+    <div id="main">
+        <h2>NB1 játékosok táblázata</h2>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Mezszám</th>
+                <th scope="col">Név</th>
+                <th scope="col">Klub</th>
+                <th scope="col">Poszt</th>
+                <th scope="col">Légiós</th>
+                <th scope="col">Születési idő</th>
+                <th scope="col">Érték</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="jatekos : ${labdarugok}">
+                <th scope="Mezszám" th:text="${jatekos.mezszam}">19</th>
+
+                <td scope="Név"
+                    th:text="${jatekos.vezeteknev} + ' ' + ${jatekos.utonev}">
+                    Andric Nemanja
+                </td>
+
+                <td scope="Klub"
+                    th:text="${jatekos.klub != null} ? ${jatekos.klub.csapatnev} : 'Ismeretlen klub'">
+                    Balmazújváros FC
+                </td>
+
+                <td scope="Poszt"
+                    th:text="${jatekos.poszt != null} ? ${jatekos.poszt.nev} : 'Ismeretlen poszt'">
+                    középcsatár
+                </td>
+
+                <!-- Légiós oszlop – a Labdarugo.getLegiosSzoveg() alapján -->
+                <td scope="Légiós"
+                    th:text="${jatekos.legiosSzoveg}">
+                    Nem
+                </td>
+
+                <!-- Születési idő -->
+                <td scope="Születési idő"
+                    th:text="${jatekos.szulido != null} ? ${#temporals.format(jatekos.szulido, 'yyyy-MM-dd')} : 'Ismeretlen'">
+                    1987-06-13
+                </td>
+
+                <!-- Érték -->
+                <td scope="Érték"
+                    th:text="${jatekos.ertek} + ' ezer €'">
+                    250 ezer €
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" th:replace="fragments/footer"></footer>
+</div>
+
+<!-- Scripts -->
+<script th:src="@{/javascripts/jquery.min.js}"></script>
+<script th:src="@{/javascripts/jquery.scrollex.min.js}"></script>
+<script th:src="@{/javascripts/jquery.scrolly.min.js}"></script>
+<script th:src="@{/javascripts/browser.min.js}"></script>
+<script th:src="@{/javascripts/breakpoints.min.js}"></script>
+<script th:src="@{/javascripts/util.js}"></script>
+<script th:src="@{/javascripts/main.js}"></script>
+
+</body>
+</html>
